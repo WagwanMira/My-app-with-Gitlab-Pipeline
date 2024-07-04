@@ -1,0 +1,12 @@
+stages:          # List of stages for jobs, and their order of execution
+  - build
+  - test
+  - deploy
+ 
+build-job:       # This job runs in the build stage, which runs first.
+  stage: build
+  rules: 
+    - if: '$CI_COMMIT_BRANCH == "main" '  
+    - when: always 
+  script: 
+    - ssh dima@192.168.50.154 "bash /home/dima/git2/dima2/script1.sh"
